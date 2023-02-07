@@ -202,6 +202,41 @@
                 </div>
             </div>
 
+            {{!-- utteranc --}}
+            <script>
+                var utteranc = document.createElement('script');
+                utteranc.setAttribute('src', 'https://utteranc.es/client.js');
+                utteranc.setAttribute('repo', 'preinpost/preinpost.github.io');
+                utteranc.setAttribute('issue-term', 'pathname');
+                utteranc.setAttribute('crossorigin', 'anonymous');
+                utteranc.setAttribute('async', '');
+
+                var theme;
+                var utteranc_theme = 'github-light';
+                try { theme = localStorage.getItem('mdbook-theme'); } catch (e) { }
+                if (theme === null || theme === undefined) { utteranc.setAttribute('theme', utteranc_theme); }
+
+                else if (theme == 'light') {
+                    utteranc_theme = 'github-light';
+                } else if (theme == 'rust') {
+                    utteranc_theme = 'gruvbox-dark';
+                } else if (theme == 'coal') {
+                    utteranc_theme = 'github-dark';
+                } else if (theme == 'navy') {
+                    utteranc_theme = 'icy-dark';
+                } else if (theme == 'ayu') {
+                    utteranc_theme = 'photon-dark';
+                } else {
+                    utteranc_theme = 'github-light';
+                }
+
+                utteranc.setAttribute('theme', utteranc_theme);
+
+                var content = document.getElementById('content');
+                content.append(utteranc);
+
+            </script>
+
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 {{#previous}}
                     <a rel="prev" href="{{ path_to_root }}{{link}}" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
